@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductsService {
   uri = 'http://localhost:4000/products';
+  product_added = 0;
 
   constructor(private http: HttpClient) { }
 
@@ -15,9 +16,12 @@ export class ProductsService {
       ProductDescription,
       ProductPrice
     };
-    console.log(obj);
-    this.http.post(`${this.uri}/add`, obj)
-        .subscribe(res => console.log('Done'));
+
+    this.http.post(`${this.uri}/add`, obj, { responseType: "json"})
+        .subscribe(res => { 
+          if (res.save)  
+            this.product_added = 1; 
+        });
   }
 
   getProducts() {

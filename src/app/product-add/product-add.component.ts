@@ -11,6 +11,7 @@ import { ProductsService } from '../products.service';
 export class ProductAddComponent implements OnInit {
 
   angForm: FormGroup;
+  product_added: number; 
   constructor(private fb: FormBuilder, private ps: ProductsService) {
     this.createForm();
   }
@@ -25,8 +26,12 @@ export class ProductAddComponent implements OnInit {
 
   addProduct(ProductName, ProductDescription, ProductPrice) {
     this.ps.addProduct(ProductName, ProductDescription, ProductPrice);
-  }
 
+    setTimeout(() => {
+        this.product_added = this.ps.product_added;
+    }, 5000);
+
+  }
 
   ngOnInit() {
   }
