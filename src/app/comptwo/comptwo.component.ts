@@ -6,7 +6,7 @@ import { UserpreferencesService } from '../userpreferences.service';
   templateUrl: './comptwo.component.html',
   styleUrls: ['./comptwo.component.css']
 })
-export class ComptwoComponent implements OnInit {
+export class ComptwoComponent implements OnInit{
 
   constructor(private UserPreferences: UserpreferencesService) {
 
@@ -14,6 +14,14 @@ export class ComptwoComponent implements OnInit {
     //color should be green
     console.log(this.UserPreferences.color);
  }
+
+  get color(): string {
+    return this.UserPreferences.color;
+  }
+
+  set color(val) {
+    this.UserPreferences.color = val;
+  }
 
   ngOnInit() {
   }

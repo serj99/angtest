@@ -5,12 +5,21 @@ import { UserpreferencesService } from '../userpreferences.service';
   templateUrl: './compone.component.html',
   styleUrls: ['./compone.component.css']
 })
-export class ComponeComponent implements OnInit {
+export class ComponeComponent implements OnInit{
   constructor(private UserPreferences: UserpreferencesService) {
     console.log(this.UserPreferences.color);
     this.UserPreferences.color = 'green';
     console.log(this.UserPreferences.color);
   }
+
+  get color(): string {
+    return this.UserPreferences.color;
+  }
+
+  set color(val) {
+    this.UserPreferences.color = val;
+  }
+
   ngOnInit() {
   }
 }
